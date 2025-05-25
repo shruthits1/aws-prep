@@ -1,4 +1,4 @@
-**Question ** 
+**Question** 
 A company recently migrated to AWS and wants to implement a solution to protect the traffic that flows in and out of the
 production VPC. The company had an inspection server in its on-premises data center. The inspection server performed
 specific operations such as traffic flow inspection and traffic filtering. The company wants to have the same functionalities in
