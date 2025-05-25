@@ -160,4 +160,26 @@ So, while **VPN provides secure connectivity**, **VPC defines a private cloud en
 | Availability | Multi-AZ option | Highly available with 6 copies of data | 
 | Backup Impact | Can affect performance | Continuous backups with no performance impact | 
 
+#### **IAM Roles vs IAM Policies**
+No worries, Shruthi! IAM **roles** and **policies** are closely related but serve different purposes. Let’s break it down:
+
+### **IAM Roles vs. IAM Policies**
+
+| Feature | IAM Role | IAM Policy |
+|---------|---------|------------|
+| **Purpose** | Defines **who** can assume permissions | Defines **what** permissions are granted |
+| **Attached To** | Users, services, applications | Users, groups, roles, or resources |
+| **Authentication** | Temporary credentials (assumed by entities) | No authentication, just permission rules |
+| **Use Case** | Allow services to access AWS resources securely | Control access to AWS resources |
+| **Examples** | When an **AWS service** (like Lambda, EC2, or ECS) needs access to another AWS resource. When **users from another AWS account** need temporary access. When using **federated authentication** | When defining **permissions** for users, groups, or roles. When restricting access to **specific AWS resources**. When enforcing **least privilege access** |
+
+**How They Work Together**
+- **Roles** define **who** can assume permissions.
+- **Policies** define **what** those permissions allow.
+- A role **without a policy** has **no permissions**.
+- A policy **without a role** is **unused**.
+**Example** If an EC2 instance needs access to S3, you:
+- Create an IAM role with an S3 access policy.
+- Attach the role to the EC2 instance.
+- The instance can now access S3 without needing hardcoded credentials.
 
