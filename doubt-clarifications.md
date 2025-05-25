@@ -22,6 +22,7 @@ Amazon Kinesis, SQS (Simple Queue Service), and SNS (Simple Notification Service
 Key Differences
 
 | Feature | Amazon SQS | Amazon MQ | 
+| ---- } ---- | ---- |
 | Message Model | Simple queue | Message broker | 
 | Protocol Support | AWS API | AMQP, JMS, MQTT | 
 | Use Case | Decoupling microservices | Migrating existing messaging systems | 
@@ -55,6 +56,7 @@ So while each individual SQS queue delivers a message to only one consumer, SNS 
 
 ####**How they work together and their key differences**
 | Service | Purpose | How It Works | 
+| ---- } ---- | ---- |
 | Amazon CloudFront | Content Delivery Network (CDN) | Caches and delivers static & dynamic content from edge locations worldwide to reduce latency. | 
 | AWS Global Accelerator | Network Performance Optimization | Routes traffic through AWS’s global network for lower latency and improved availability. Uses static IPs for consistent routing. | 
 | Amazon Route 53 | DNS Management | Provides domain name resolution, traffic routing, and health checks for applications. | 
@@ -93,6 +95,7 @@ Secrets Manager **encrypts secrets using KMS**, ensuring secure storage. When re
 If you need secure storage for secrets with automatic rotation, go with Secrets Manager. If you need structured configuration management, Parameter Store is the better choice.
 
 | Feature | Parameter Store | Secrets Manager | 
+| ---- } ---- | ---- |
 | Use Case | Configuration data & basic secrets | Sensitive secrets (passwords, API keys) | 
 | Secret Rotation | Manual | Automatic | 
 | Cost | Lower | Higher | 
@@ -106,6 +109,7 @@ If you need secure storage for secrets with automatic rotation, go with Secrets 
 ####**Different protocols for different layers**
 
 | Protocol | Purpose | Use Case | Layer |
+| ---- } ---- | ---- |
 | SSL (Secure Sockets Layer) | Encrypts data between client & server | Deprecated, replaced by TLS | Application Layer |
 | TLS (Transport Layer Security) | Secure communication over the internet | HTTPS, email encryption, VPNs | Application Layer |
 | mTLS (Mutual TLS) | Both client & server authenticate each other | Zero-trust security, API authentication | Application Layer |
