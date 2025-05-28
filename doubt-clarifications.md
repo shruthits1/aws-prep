@@ -67,7 +67,7 @@ How They Work Together
 - Global Accelerator + Route 53: Route 53 can resolve domain names to Global Accelerator’s static IPs, improving failover and performance.
 - CloudFront + Global Accelerator: CloudFront caches content, while Global Accelerator optimizes network routing for dynamic applications.
 
-If you need fast content delivery, use CloudFront. If you need low-latency global routing, use Global Accelerator. And if you need domain resolution and traffic management, use Route 53.
+If you need fast content delivery, use CloudFront. If you need low-latency global routing with failover where traffic can switch from unhealthy to healthy endpoints, use Global Accelerator. And if you need domain resolution and traffic management, use Route 53.
   
 **Note**
   - Fast Content Delivery refers to how quickly static and dynamic content (like images, videos, and web pages) is delivered to users
@@ -137,7 +137,28 @@ If you need secure storage for secrets with automatic rotation, go with Secrets 
 - **AWS Client VPN** enables **individual users** to securely access AWS resources inside a VPC.
 
 So, while **VPN provides secure connectivity**, **VPC defines a private cloud environment**.  
-      
+
+#### **Compare all DBs on AWS**
+
+AWS offers a variety of **managed database services**, each designed for different workloads. Here's a comparison of the major AWS database services:
+
+### **Comparison of AWS Database Services**
+
+| Database Type | AWS Service | Best For | Key Features |
+|--------------|------------|----------|--------------|
+| **Relational (SQL)** | **Amazon RDS** | Traditional applications needing SQL databases | Supports MySQL, PostgreSQL, SQL Server, Oracle, MariaDB; automated backups & scaling |
+|  | **Amazon Aurora** | High-performance SQL workloads | 5x faster than MySQL, 2x faster than PostgreSQL; auto-scaling storage |
+| **NoSQL (Key-Value)** | **Amazon DynamoDB** | High-speed, scalable applications | Serverless, single-digit millisecond latency, auto-scaling |
+| **Document Database** | **Amazon DocumentDB** | MongoDB-compatible workloads | Fully managed, scalable document database |
+| **Graph Database** | **Amazon Neptune** | Social networks, fraud detection | Supports **RDF, Property Graph**, optimized for graph queries |
+| **In-Memory Database** | **Amazon ElastiCache** | Caching, session storage | Supports **Redis & Memcached**, ultra-low latency |
+|  | **Amazon MemoryDB** | High-performance Redis workloads | Durable, highly available Redis-compatible database |
+| **Time-Series Database** | **Amazon Timestream** | IoT, DevOps monitoring | Optimized for time-series data, automatic scaling |
+| **Wide-Column Database** | **Amazon Keyspaces** | Apache Cassandra workloads | Fully managed, scalable, serverless Cassandra-compatible database |
+| **Ledger Database** | **Amazon QLDB** | Immutable transaction records | Cryptographically verifiable ledger, ideal for financial applications |
+| **Data Warehousing** | **Amazon Redshift** | Analytics, business intelligence | Columnar storage, massively parallel processing (MPP) |
+
+  
 #### **3️⃣ Databases & Scaling**
 - **RDS vs. Aurora**:
   - **RDS** supports multiple engines, requires **manual scaling**.
@@ -160,8 +181,20 @@ So, while **VPN provides secure connectivity**, **VPC defines a private cloud en
 | Availability | Multi-AZ option | Highly available with 6 copies of data | 
 | Backup Impact | Can affect performance | Continuous backups with no performance impact | 
 
+#### **Why would we use S3 for static content and dynamoDB for dynamic/user generated**
+**S3** 
+- **Optimized for Large Files** like images, videos, and HTML files,
+- **Cost-Effective**, Can handle **millions of requests per second** without performance issues. Works with **CloudFront CDN** to deliver content efficiently worldwide.
+
+**DynamoDB**
+- DynamoDB provides **low-latency** access to structured data. **Flexible Queries**, **Auto Scaling**, Works well with **Lambda** for real-time updates.
+
+
+>> **Note** for unpredictable pattern, always go with intelligent tiering
+
+
 #### **IAM Roles vs IAM Policies**
-No worries, Shruthi! IAM **roles** and **policies** are closely related but serve different purposes. Let’s break it down:
+IAM **roles** and **policies** are closely related but serve different purposes. Let’s break it down:
 
 ### **IAM Roles vs. IAM Policies**
 
@@ -182,4 +215,35 @@ No worries, Shruthi! IAM **roles** and **policies** are closely related but serv
 - Create an IAM role with an S3 access policy.
 - Attach the role to the EC2 instance.
 - The instance can now access S3 without needing hardcoded credentials.
+
+####**Difference between AWS Config and AWS CloudTrail**
+- AWS Config is designed for tracking configuration changes in AWS resources, helping with compliance, governance, and security audits.
+- AWS CloudTrail records history of API calls made to AWS services, allowing the company to audit changes and troubleshoot security events.
+
+#### **AWS Shield vs Guard duty vs AWS Shield with Route 53 vs Amazon Inspector**
+Great question! These AWS security services serve different purposes, but they can work together to enhance security across your cloud environment.
+
+### **Comparison of AWS Shield, GuardDuty, Route 53 with Shield, and Amazon Inspector**
+| Service | Purpose | Key Features | Use Case |
+|---------|---------|--------------|----------|
+| **AWS Shield** | **DDoS protection** | Protects against Layer 3/4 attacks (Shield Standard) and Layer 7 attacks (Shield Advanced) | Protects **CloudFront, ALB, Route 53, and AWS Global Accelerator** from DDoS attacks |
+| **AWS GuardDuty** | **Threat detection** | Uses machine learning to detect anomalies in AWS logs (CloudTrail, VPC Flow Logs, DNS logs) | Identifies **compromised instances, unauthorized access, and malicious activity** |
+| **AWS Shield + Route 53** | **DDoS protection for DNS** | Shield Advanced integrates with Route 53 to protect against DNS-based DDoS attacks | Ensures **high availability** of DNS services during attacks |
+| **Amazon Inspector** | **Vulnerability assessment** | Scans EC2 instances, Lambda functions, and container workloads for security risks | Detects **misconfigurations, outdated software, and security vulnerabilities** |
+
+### **When to Use Each?**
+- **Use AWS Shield** if you need **DDoS protection** for web applications and AWS services.
+- **Use GuardDuty** if you need **real-time threat detection** for AWS accounts and workloads.
+- **Use Shield with Route 53** if you need **DDoS protection for DNS services**.
+- **Use Amazon Inspector** if you need **automated security assessments** for workloads.
+
+>> **AWS Systems Manager Session Manager provides secure, remote access to EC2 instances without needing SSH keys or a bastion host, reducing operational overhead.**
+
+#### **Why use AWS EMR**
+Amazon Elastic MapReduce.
+- Amazon EMR is a managed big data processing service that helps run distributed processing frameworks like Apache Spark, Hadoop, and Presto.
+- It simplifies big data analytics on AWS by automating cluster provisioning, scaling, and management.
+- EMR is widely used for data transformations, analytics, machine learning, and log processing at scale.
+
+
 
