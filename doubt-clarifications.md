@@ -199,6 +199,16 @@ AWS offers a variety of **managed database services**, each designed for differe
 - DynamoDB point-in-time recovery (PITR) allows automatic backups that can be restored to any point within the last 35 days, making it ideal for meeting the 15-minute RPO requirement.
 - It enables quick recovery within the 1-hour RTO window, ensuring minimal downtime and efficient rollback in case of data corruption
 
+#### **Difference between DMS and Datasync**
+
+| Feature | AWS DataSync | AWS DMS |
+|---------|------------|--------|
+| **Purpose** | Transfers files & objects | Migrates databases |
+| **Data Type** | Unstructured (files, objects) | Structured (databases) |
+| **Use Case** | Moving large datasets between storage systems | Migrating databases with minimal downtime |
+| **Real-Time Sync** | No (scheduled or manual transfers) | Yes (continuous replication) |
+| **Supported Sources** | On-premises storage, S3, EFS, FSx | MySQL, PostgreSQL, Oracle, SQL Server, MariaDB |
+| **Target Destinations** | S3, EFS, FSx, on-premises storage | RDS, Aurora, Redshift, DynamoDB |
 
 #### **IAM Roles vs IAM Policies**
 IAM **roles** and **policies** are closely related but serve different purposes. Let’s break it down:
