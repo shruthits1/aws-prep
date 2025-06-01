@@ -106,6 +106,9 @@ If you need secure storage for secrets with automatic rotation, go with Secrets 
 - AWS Certificate Manager (ACM) generates and manages SSL/TLS certificates. When you request a public certificate, ACM creates a public/private key pair.
 - The private key is securely stored and protected using AWS KMS.
 - For imported certificates, you generate the key pair externally, and ACM stores the certificate and private key while using KMS for encryption.
+#### **S3 SSE vs KMS SSE**
+- SSE-KMS enables encryption at rest while allowing granular access control through IAM policies and KMS key permissions.
+- SSE-S3 lacks key-level access controls, making SSE-KMS the more secure option
 
 ####**Different protocols for different layers**
 
@@ -287,4 +290,32 @@ AWS offers a wide range of **AI and ML services**, covering everything from **pr
 - **Use CodeGuru** for **AI-powered code reviews**.
 - **Use Kendra** for **intelligent search**.
 
+#### **Disaster recovery services**
+**Disaster Recovery Services**
+- **AWS Elastic Disaster Recovery (AWS DRS)**: Provides **fast recovery** for on-premises and cloud-based applications.
+- **AWS Backup**: Centralized backup management for **EC2, RDS, DynamoDB, S3, and more**.
+- **Amazon S3 Cross-Region Replication (CRR)**: Replicates objects across AWS regions for **data redundancy**.
+
+**Failover Services**
+- **Route 53 DNS Failover**: Automatically redirects traffic to a healthy endpoint during failures.
+- **AWS Global Accelerator**: Routes traffic to the nearest healthy AWS endpoint for **low-latency failover**.
+- **Amazon RDS Multi-AZ**: Provides automatic failover for **database instances**.
+
+**Replication Services**
+- **Amazon S3 Replication**: Supports **same-region and cross-region replication** for data redundancy.
+- **Amazon Aurora Global Database**: Replicates data across multiple AWS regions for **high availability**.
+- **AWS Database Migration Service (DMS)**: Helps migrate and replicate databases across AWS.
+
+#### **Amazon AppFlow flow**
+Amazon AppFlow is a fully managed integration service that enables secure data transfer between SaaS applications (like Salesforce, SAP, and Google Analytics) and AWS services (like S3 and Redshift) without requiring custom code.
+How Amazon AppFlow Works
+- Automates Data Transfers: Moves data between SaaS apps and AWS services on-demand or on a schedule.
+- Supports Large-Scale Transfer for high-volume data 
+- Encrypts data at rest and in transit.
+- Works with AWS Glue, Redshift, and SageMaker for data processing.
+
+#### **Server name indicator & its uses**
+Server Name Indication (SNI) is an extension of the TLS (Transport Layer Security) protocol that allows a client (like a web browser) to specify the hostname it wants to connect to during the TLS handshake
+
+When a client connects to a server using HTTPS, it includes the hostname in the TLS handshake. The server then presents the correct SSL certificate for that hostname, ensuring a secure connection.
 
