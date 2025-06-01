@@ -166,11 +166,14 @@ AWS offers a variety of **managed database services**, each designed for differe
 - **RDS vs. Aurora**:
   - **RDS** supports multiple engines, requires **manual scaling**.
   - **Aurora** is **auto-scaling**, highly available, and optimized for **MySQL/PostgreSQL** and Fault-Tolerant Storage where data is stored in 6 copies across three Availability Zones (AZs).
-
+ 
 - **Scaling in RDS**:
   - **Vertical Scaling**: Change **instance type** for more power.
   - **Horizontal Scaling**: Add **read replicas** for better read performance.
 - **Storage Autoscaling**: Expands storage automatically when needed.
+
+>> Note: configuring DynamoDB in on-demand mode allows dynamic scaling based on workload without specifying auto scalaing group. This won't happen if running dynamoDB in provisioned mode.
+>> Note: S3 **object lock** eensures immutability where even admin cannot override. It is preferred for compliance purpose where principle is **write once read many** This can't be done via ACL as admins can override that.
 
 #### **Choosing between RDS and Aurora**
 
