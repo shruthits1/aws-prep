@@ -195,6 +195,10 @@ AWS offers a variety of **managed database services**, each designed for differe
 
 >> **Note** for unpredictable pattern, always go with intelligent tiering
 
+#### **ensuring RPO and RTO for dynamo DB**
+- DynamoDB point-in-time recovery (PITR) allows automatic backups that can be restored to any point within the last 35 days, making it ideal for meeting the 15-minute RPO requirement.
+- It enables quick recovery within the 1-hour RTO window, ensuring minimal downtime and efficient rollback in case of data corruption
+
 
 #### **IAM Roles vs IAM Policies**
 IAM **roles** and **policies** are closely related but serve different purposes. Let’s break it down:
@@ -243,6 +247,7 @@ Great question! These AWS security services serve different purposes, but they c
 >> **AWS Systems Manager Session Manager provides secure, remote access to EC2 instances without needing SSH keys or a bastion host, reducing operational overhead.**
 
 #### **IAM services**
+> IAM roles are better suited for service-to-service authentication, not direct user authentication.
 
 | Service | Best For | Key Features | Use Case |
 |---------|---------|--------------|----------|
