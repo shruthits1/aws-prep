@@ -174,6 +174,7 @@ AWS offers a variety of **managed database services**, each designed for differe
 
 >> Note: configuring DynamoDB in on-demand mode allows dynamic scaling based on workload without specifying auto scalaing group. This won't happen if running dynamoDB in provisioned mode.
 >> Note: S3 **object lock** eensures immutability where even admin cannot override. It is preferred for compliance purpose where principle is **write once read many** This can't be done via ACL as admins can override that.
+>> Note: Aurora database cloning allows rapid creation of full copy of database without downtime. 
 
 #### **Choosing between RDS and Aurora**
 
