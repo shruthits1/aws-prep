@@ -92,6 +92,11 @@ If you need **encryption for data**, use **KMS**. If you need **secure storage a
 **How They Work Together**
 Secrets Manager **encrypts secrets using KMS**, ensuring secure storage. When retrieving a secret, Secrets Manager **decrypts it using KMS keys** before providing access.
 
+**Note** 
+Client side encryption : You manage encryption and keys and encrypt data before sending to S3
+SSE-C : you manage keys but AWS manages encryption
+SSE-S3 : AWS manages both encryption and keys
+
 **Why Use Parameter Store Instead of Secrets Manager?**
 If you need secure storage for secrets with automatic rotation, go with Secrets Manager. If you need structured configuration management, Parameter Store is the better choice.
 
@@ -140,6 +145,7 @@ If you need secure storage for secrets with automatic rotation, go with Secrets 
 - **AWS Client VPN** enables **individual users** to securely access AWS resources inside a VPC.
 
 So, while **VPN provides secure connectivity**, **VPC defines a private cloud environment**.  
+**Note** An AWS Site-to-Site VPN connection offers two VPN tunnels between a virtual private gateway or a transit gateway on the AWS side, and a customer gateway (which represents a VPN device) on the remote (on-premises) side.
 
 #### **Compare all DBs on AWS**
 
@@ -213,6 +219,11 @@ AWS offers a variety of **managed database services**, each designed for differe
 | **Real-Time Sync** | No (scheduled or manual transfers) | Yes (continuous replication) |
 | **Supported Sources** | On-premises storage, S3, EFS, FSx | MySQL, PostgreSQL, Oracle, SQL Server, MariaDB |
 | **Target Destinations** | S3, EFS, FSx, on-premises storage | RDS, Aurora, Redshift, DynamoDB |
+
+**Note** DataSync must be used to trasfer data to S3 and not for ongoing replication. You can use File storage for ongoing data transfers
+**Note** OAI - origin access identity is a special user on CloudFront. To prevent users from accessing files directly, add S3 bucket permissions to allow access to only the OAI from cloudfront
+
+**Note** NFS is unix/linux based files. POSIX is unix standard, SMB is for windows files
 
 #### **IAM Roles vs IAM Policies**
 IAM **roles** and **policies** are closely related but serve different purposes. Let’s break it down:
@@ -337,4 +348,7 @@ How Amazon AppFlow Works
 Server Name Indication (SNI) is an extension of the TLS (Transport Layer Security) protocol that allows a client (like a web browser) to specify the hostname it wants to connect to during the TLS handshake
 
 When a client connects to a server using HTTPS, it includes the hostname in the TLS handshake. The server then presents the correct SSL certificate for that hostname, ensuring a secure connection.
+
+#### **Elastic IP**
+An Elastic IP address is a static IPv4 address designed for dynamic cloud computing. An Elastic IP address is associated with your AWS account. With an Elastic IP address, you can mask the failure of an instance or software by rapidly remapping the address to another instance in your account.
 
