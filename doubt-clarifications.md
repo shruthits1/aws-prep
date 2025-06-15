@@ -362,3 +362,23 @@ An Elastic IP address is a static IPv4 address designed for dynamic cloud comput
 If resources are unbalanced in ASG, Auto scaling will re-balance the resources. 
 it instantiates a new instance before terminating unhealthy one
 Note : when simply auto scaling and not rebalancing, the sequence is opposite, Auto Scaling creates a new scaling activity for terminating the unhealthy instance and then terminates it. Later, another scaling activity launches a new instance to replace the terminated instance.
+
+#### **Difference between Elastic Network interface (ENI) and Elastic Data Fabric (EFA)**
+**Elastic Network Interface (ENI)**
+- A **virtual network card** attached to an EC2 instance.
+- Provides **basic networking capabilities**, including multiple IP addresses and security groups.
+- Used for **standard networking** in AWS, such as creating **management networks** or **dual-homed instances**.
+
+**Elastic Fabric Adapter (EFA)**
+- A **high-performance network device** designed for **HPC (High-Performance Computing) and machine learning applications**.
+- Supports **OS-bypass**, allowing applications to communicate directly with the network hardware for **lower latency and higher throughput**.
+- Ideal for workloads requiring **fast inter-node communication**, such as **MPI-based applications**.
+
+| **Feature** | **ENI** | **EFA** |
+|------------|--------|--------|
+| **Purpose** | Standard networking | High-performance computing |
+| **Latency** | Normal | Lower latency |
+| **Throughput** | Standard | Higher throughput |
+| **Use Case** | General EC2 networking | HPC, AI/ML workloads |
+
+
