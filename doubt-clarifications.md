@@ -223,7 +223,13 @@ AWS offers a variety of **managed database services**, each designed for differe
 **Note** DataSync must be used to trasfer data to S3 and not for ongoing replication. You can use File storage for ongoing data transfers
 **Note** OAI - origin access identity is a special user on CloudFront. To prevent users from accessing files directly, add S3 bucket permissions to allow access to only the OAI from cloudfront
 
-**Note** NFS is unix/linux based files. POSIX is unix standard, SMB is for windows files
+**Note** 
+- NFS is unix/linux based files.
+- POSIX is unix standard,
+- SMB is for windows files.
+- Lustre is POSIX compliant.
+- ONTAP is netapp filesystem that supports windows, linux and mac and SMB.
+- ZFS supports windows linuz and mac clients
 
 #### **IAM Roles vs IAM Policies**
 IAM **roles** and **policies** are closely related but serve different purposes. Let’s break it down:
@@ -352,3 +358,7 @@ When a client connects to a server using HTTPS, it includes the hostname in the 
 #### **Elastic IP**
 An Elastic IP address is a static IPv4 address designed for dynamic cloud computing. An Elastic IP address is associated with your AWS account. With an Elastic IP address, you can mask the failure of an instance or software by rapidly remapping the address to another instance in your account.
 
+#### **Auto Scaling**
+If resources are unbalanced in ASG, Auto scaling will re-balance the resources. 
+it instantiates a new instance before terminating unhealthy one
+Note : when simply auto scaling and not rebalancing, the sequence is opposite, Auto Scaling creates a new scaling activity for terminating the unhealthy instance and then terminates it. Later, another scaling activity launches a new instance to replace the terminated instance.
