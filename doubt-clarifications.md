@@ -73,7 +73,7 @@ If you need fast content delivery, use CloudFront. If you need low-latency globa
   - Fast Content Delivery refers to how quickly static and dynamic content (like images, videos, and web pages) is delivered to users
   - Low Latency refers to the delay between a request and its response.
 
-####**when to use amazon key management service and aws secrets manager**
+#### **when to use amazon key management service and aws secrets manager**
 Amazon Key Management Service (KMS) and AWS Secrets Manager serve different purposes, but they often work together to enhance security:
 If you need **encryption for data**, use **KMS**. If you need **secure storage and automatic rotation of credentials**, use **Secrets Manager**
 
@@ -115,10 +115,10 @@ If you need secure storage for secrets with automatic rotation, go with Secrets 
 - SSE-KMS enables encryption at rest while allowing granular access control through IAM policies and KMS key permissions.
 - SSE-S3 lacks key-level access controls, making SSE-KMS the more secure option
 
-####**Different protocols for different layers**
+#### **Different protocols for different layers**
 
 | Protocol | Purpose | Use Case | Layer |
-| ---- | ---- | ---- |
+| ---- | ---- | ---- | ---- |
 | SSL (Secure Sockets Layer) | Encrypts data between client & server | Deprecated, replaced by TLS | Application Layer |
 | TLS (Transport Layer Security) | Secure communication over the internet | HTTPS, email encryption, VPNs | Application Layer |
 | mTLS (Mutual TLS) | Both client & server authenticate each other | Zero-trust security, API authentication | Application Layer |
@@ -254,7 +254,7 @@ IAM **roles** and **policies** are closely related but serve different purposes.
 - Attach the role to the EC2 instance.
 - The instance can now access S3 without needing hardcoded credentials.
 
-####**Difference between AWS Config and AWS CloudTrail**
+#### **Difference between AWS Config and AWS CloudTrail**
 - AWS Config is designed for tracking configuration changes in AWS resources, helping with compliance, governance, and security audits.
 - AWS CloudTrail records history of API calls made to AWS services, allowing the company to audit changes and troubleshoot security events.
 
